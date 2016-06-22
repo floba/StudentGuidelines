@@ -1,4 +1,30 @@
+%choose template: (un)comment all 5 lines:
+
+%Template 1: IEEE (for Engineer's Internship Report, Seminar Paper, Researcher's Internship Report)
 \documentclass[journal]{IEEEtran}
+\usepackage{ifthen}
+\newboolean{isIEEETemplate}\setboolean{isIEEETemplate}{true}
+\newboolean{isArticleTemplate}\setboolean{isArticleTemplate}{false}
+\newboolean{isReportTemplate}\setboolean{isReportTemplate}{false}
+
+
+%%Template 2: scrartcl (for Engineer's Internship Report, Seminar Paper, Researcher's Internship Report)
+%\documentclass[a4paper, 10pt, DIV10, pointlessnumbers]{scrartcl}
+%\usepackage{ifthen}
+%\newboolean{isIEEETemplate}\setboolean{isIEEETemplate}{false}
+%\newboolean{isArticleTemplate}\setboolean{isArticleTemplate}{true}
+%\newboolean{isReportTemplate}\setboolean{isReportTemplate}{false}
+
+
+%%Template 3: scrreprt (for Bachelor Thesis, Master Thesis)
+%\documentclass[a4paper, 10pt, DIV10, pointlessnumbers]{scrreprt}
+%\usepackage{ifthen}
+%\newboolean{isIEEETemplate}\setboolean{isIEEETemplate}{false}
+%\newboolean{isArticleTemplate}\setboolean{isArticleTemplate}{false}
+%\newboolean{isReportTemplate}\setboolean{isReportTemplate}{true}
+
+
+
 
 % Some very useful LaTeX packages include:
 % (uncomment the ones you want to load)
@@ -270,6 +296,10 @@
 % *** PDF, URL AND HYPERLINK PACKAGES ***
 %
 \usepackage{url}
+\usepackage[hyphens]{url}
+\renewcommand{\UrlBreaks}{\do\/\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z}
+%\usepackage[hyphenbreaks]{breakurl}
+\urlstyle{same}
 \usepackage{hyperref}
 % url.sty was written by Donald Arseneau. It provides better support for
 % handling and breaking URLs. url.sty is already installed on most LaTeX
@@ -297,6 +327,9 @@
 \newlength\figureheight
 \newlength\figurewidth
 
+% tables
+\usepackage{longtable}
+
 % source code listings
 \usepackage{listings}
 
@@ -317,6 +350,7 @@
 \renewcommand{\t}[1]{\text{\normalfont{#1}}} %text for indices
 \newcommand{\M}{\boldsymbol} %matrix
 \renewcommand{\v}{\boldsymbol} %vector
+\renewcommand{\d}{\mathrm{d}} %for d / dt
 
 
 
@@ -328,30 +362,331 @@
 
 \title{Guidelines for Student Reports, Theses\\ and Presentations}
 
-\author{Max~Mustermann$^*$%
+\author{%
+\ifthenelse{\boolean{isArticleTemplate}}{
+	%un(comment) what applies:
+	%Engineer's Internship Report
+	Seminar Paper
+	%Researcher's Internship Report
+	at Technical University of Munich
+}{}\\
+Max~Mustermann$^*$%
 \thanks{$^*$ Max~Mustermann is M.Sc.\ candidate (matriculation number 123456) at the Department of Electrical Engineering and Information Technology, Technical University of Munich, Arcisstrasse 21, 80333 Munich, Germany, \url{max.mustermann@tum.de}.}
-\\June 05, 2016}%
+\ifthenelse{\boolean{isIEEETemplate}}{%
+	\\\today%
+}{}%
+}%
 
-%(un)comment what applies:
-\markboth{%
-%Engineer's Internship Report
-Seminar Paper
-%Researcher's Internship Report
-at Technical University of Munich}{}
+\ifthenelse{\boolean{isIEEETemplate}}{
+	%un(comment) what applies
+	\markboth{%
+	%Engineer's Internship Report
+	Seminar Paper
+	%Researcher's Internship Report
+	at Technical University of Munich}{}
+}{}
 
+\ifthenelse{\boolean{isIEEETemplate} \OR \boolean{isArticleTemplate}}{
 \maketitle
+}{}
 
-\begin{abstract}
+\ifthenelse{\boolean{isReportTemplate}}{
+%	% title page in German
+%	\begin{titlepage}
+%		\areaset{17cm}{25.7cm}%
+%		\hfill\includegraphics{Images/TUM.pdf}\par%
+%		\vspace{3cm}%
+%		{\noindent\Huge\bfseries\sffamily Title\par}
+%		\vspace{0.5cm}%
+%		{\noindent\LARGE\bfseries\sffamily Master Thesis\par}
+%		\vfill%
+%		{\noindent\Large Wissenschaftliche Arbeit zur Erlangung des Grades\par
+%		\vspace{1em}
+%		\noindent M.Sc.\par
+%		\vspace{1em}
+%		\noindent an der Technischen Universität München (TUM),\\ Fakultät für Elektrotechnik und Informationstechnik (EI),\\ Lehrstuhl für Elektrische Antriebssysteme und Leistungselektronik (EAL)\par
+%		\vspace{3cm}%
+%		\noindent%
+%		\begin{tabular}{ll}%
+%					eingereicht von
+%				&
+%					Max Mustermann, B.Sc.
+%					\\&
+%					Matrikelnummer: 123456
+%					\\&
+%					\url{max.mustermann@tum.de}
+%					
+%			\\
+%				\hfill
+%			\\
+%					am
+%				&
+%					\today.
+%			\\
+%				\hfill
+%			\\	
+%					1.\ Betreuer:
+%				&
+%					Univ.-Prof.\ Dr.-Ing.\ Ralph Kennel
+%					\\&
+%					Lehrstuhl für Elektrische Antriebssysteme und \\& Leistungselektronik (EAL)
+%					
+%			\\
+%				\hfill
+%			\\
+%					2.\ Betreuer:
+%				&
+%					Max Mustermann, M.Sc.
+%					\\&
+%					Lehrstuhl für Elektrische Antriebssysteme und \\& Leistungselektronik (EAL)
+%		\end{tabular}%
+%		}%
+%	\end{titlepage}
+
+	% title page in English
+	\begin{titlepage}
+		\areaset{17cm}{25.7cm}%
+		\hfill\includegraphics{Images/TUM.pdf}\par%
+		\vspace{3cm}%
+		{\noindent\Huge\bfseries\sffamily Title\par}
+		\vspace{0.5cm}%
+		{\noindent\LARGE\bfseries\sffamily Master Thesis\par}
+		\vfill%
+		{\noindent\Large to gain the academic degree\par
+		\vspace{1em}
+		\noindent M.Sc.\par
+		\vspace{1em}
+		\noindent at the Technical University of Munich (TUM),\\ Department of Electrical and Computer Engineering,\\ Institute for Electrical Drive Systems and Power Electronics\par
+		\vspace{3cm}%
+		\noindent%
+		\begin{tabular}{ll}
+					submitted by
+				&
+					Max Mustermann, B.Sc.
+					\\&
+					Matrikelnummer: 123456
+					\\&
+					\url{max.mustermann@tum.de}
+					
+			\\
+				\hfill
+			\\
+					on
+				&
+					\today	
+			\\
+				\hfill
+			\\
+					1.\ Supervisor:
+				&
+					Univ.-Prof.\ Dr.-Ing.\ Ralph Kennel
+					\\&
+					Institute for Electrical Drive Systems and Power Electronics
+					
+			\\
+				\hfill
+			\\
+					2.\ Supervisor:
+				&
+					Max Mustermann, M.Sc.
+					\\&
+					Institute for Electrical Drive Systems and Power Electronics
+		\end{tabular}%
+		}%
+	\end{titlepage}
+}{}
+
+\ifthenelse{\boolean{isIEEETemplate} \OR \boolean{isArticleTemplate}}{
+\begin{abstract}\noindent
+}{
+	\chapter*{Abstract}
+}
 Write a concise summary in 100 to 250 words maximum (half a page maximum for a thesis). You may write your abstract with the following guidelines: (i)~State the general motivation of your research field in one or maximum two sentences, e.g.\ “Recently, kites are being investigated to generate sustainable power with a lower material demand compared to conventional wind turbines.” (ii)~State the specific problem you are dealing with in one or maximum two sentences, e.g.\ “The automatic control of the kite is a major challenge.” (iii)~Briefly state how you propose to solve the problem, e.g.\ “This paper proposes to use cascaded controllers consisting of \dots” (iv)~Briefly state how you verified your idea and briefly state important results and possible/important limitations, e.g.\ “Simulations and experiments with a small-scale system demonstrated the validity and stability of the developed controllers. An efficiency of \dots was achieved.”---The abstract is only one paragraph. Avoid abbreviations if possible and do not use any references to other publications or to parts of this document. Write the abstract with the following in mind: The abstract serves anybody to decide if a work is relevant for his/her work. If the reader thinks that the abstract sounds relevant to him/her, he/she would then continue, and might read your conclusions right afterwards before reading all other sections. Consequently, abstract and conclusions are very important parts of your report/thesis.
+\ifthenelse{\boolean{isIEEETemplate} \OR \boolean{isArticleTemplate}}{
 \end{abstract}
+}
 
-\begin{IEEEkeywords}
-Give a couple of keywords (maximum five), e.g.: Kite, cascaded control, stability analysis.
-\end{IEEEkeywords}
+\ifthenelse{\boolean{isIEEETemplate}}{
+	\begin{IEEEkeywords}
+	Give a couple of keywords (maximum five), e.g.: Kite, cascaded control, stability analysis.
+	\end{IEEEkeywords}
+}
 
-\section{Motivation}
+\ifthenelse{\boolean{isReportTemplate}}{
+%	%statement in German
+%	\addcontentsline{toc}{chapter}{Erklärung}
+%	\chapter*{Erklärung}
+%	
+%	Ich versichere hiermit, dass ich die von mir eingereichte Abschlussarbeit selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe.
+%	
+%	\vspace{2cm}
+%	\noindent
+%	München, den \today\\
+%	Max Mustermann
+	
+	%statement in English
+	\chapter*{Statement}
+	
+	No sections of this thesis were submitted or used to gain another academic degree. Hereby I state, that this thesis was written alone by myself, except of explicitly marked passages.
+	
+	\vspace{2cm}
+	\noindent
+	Munich, \today\\
+	Max Mustermann
 
-\IEEEPARstart{T}{he} first section is always titled “Motivation” or alternatively “Introduction”. In this first section, you briefly introduce your topic and motivate why it is interesting/important to actually think about it. E.g.\ in the first one or two paragraphs of a work related to kite power, you briefly introduce the idea/technology of kite power, also with a figure.
+
+	\chapter*{Acknowledgments}
+	
+	\dots if you would like to thank someone. In a thesis, acknowledgements are usually put on one of the first pages.
+	
+	\vspace{2cm}
+	\noindent
+	Munich, \today\\
+	Max Mustermann
+
+	\chapter*{Preface}
+	
+	\dots if you would like to write a preface.
+
+	\tableofcontents
+
+
+	\chapter*{Nomenclature}
+	\addcontentsline{toc}{chapter}{Nomenclature}
+	
+	\begin{longtable}[H]{p{3cm}p{11cm}}
+				\textsf{\textbf{Symbol}}
+			&
+				\textsf{\textbf{Meaning}}
+		\hline\endhead
+				$\F{N}$
+			&
+				$:= \{0, 1, 2, 3, \dots\}$, set of natural numbers
+		\\
+				$\F{N}_{>0}$
+			&
+				$:= \{1, 2, 3, \dots\}$, set of positive natural numbers
+		\\
+				$\F{R}$
+			&
+				$:= (-\infty, \infty)$, set of real numbers
+		\\
+				$\F{R}_{> 0}$
+			&
+				$:= (0, \infty)$, set of positive real numbers
+		\\
+				$\F{R}_{\ge 0}$
+			&
+				$:= [0, \infty)$, set of positive real numbers including $0$
+		\\\hline
+			\multicolumn{2}{l}{\textit{In the following let $n, m \in \F{N}_{>0}$.}}
+		\\
+				$\v{x}$
+			&
+				$:= (x_1, x_2, \dots, x_n)^\T \in \F{R}^n$ (column) vector with $x_i \in \F{R}$ $\forall i \in \{1, 2, \dots, n\}$, \textbf{\textsf{all vectors are bold}}
+		\\
+				$|\v{x}|$
+			&
+				$:= \sqrt{\v{x}^\T \v{x}} =: x$, the Euclidean norm (or 2-norm) of $\v{x} \in \F{R}^n$
+		\\
+				$x$
+			&
+				$\in \F{R}$, scalar, \textbf{\textsf{all scalars are non-bold}}
+		\\
+				$\v{X}$
+			&
+				$:= \begin{pmatrix} x_{11} & \dots & x_{1m} \\ \vdots & \ddots & \vdots \\ x_{n1} & \dots & x_{nm} \end{pmatrix} \in \F{R}^{n \times m}$, matrix with coefficients $x_{ij}$ $\forall i \in \{1, 2, \dots, n\}$ $\forall j \in \{1, 2, \dots, m\}$, \textbf{\textsf{all matrices are upper case and bold}}
+		\\
+				$\c{x}$
+			&
+				$\in \F{R}$, constant scalar, \textbf{\textsf{all constants are non-italic}}
+		\\
+				$\dir \v{x}$
+			&
+				$:= \frac{\v{x}}{|\v{x}|} \in \F{R}^3 \cap \begin{pmatrix} [-1, 1] , [-1, 1] , [-1, 1] \end{pmatrix}^\T$, the direction or unit vector of $\v{x} \in \F{R}^n$
+		\\
+				$\dot x$
+			&
+				$:= \frac{\d x}{\d t} \in \F{R}$, first time derivative of $x \in \F{R}$
+		\\
+				$\ddot x$
+			&
+				$:= \frac{\d^2 x}{\d t^2} \in \F{R}$, second time derivative of $x \in \F{R}$
+		\\\hline
+				$\v{x}$, $\v{y}$, $\v{z}$
+			&
+				$\in \F{R}^3 \uv{(1, 1, 1)^\T}$
+				axis unit vectors of the $x$, $y$ and $z$ axis of a cartesian coordinate system
+		\\
+				$\alpha$, $\beta$, $\gamma$
+			&
+				$\in \F{R} \uv{^\circ}$
+				Euler angles for the rotations around the $x$, $y$ and $z$ axis of a cartesian coordinate system, i.e.\ roll angle, pitch or elevation angle, yaw or azimuth angle
+		\\\hline
+				$\v{x}^y$
+			&
+				$\in \F{R}^3$, 3D vector with cartesian coordinates in the $y$ fixed cartesian coordinate system where $y \in [ \t{b = body}, \t{e = earth}, \t{t = tether} ]$
+	\end{longtable}
+	
+	
+	\newpage
+	
+	\chapter*{List of Symbols}
+	\addcontentsline{toc}{chapter}{List of symbols}
+	
+	\begin{longtable}[H]{p{3cm}p{11cm}}
+				\textsf{\textbf{Symbol}}
+			&
+				\textsf{\textbf{Meaning}}
+		\hline\endhead
+			\multicolumn{2}{l}{\textit{Latin symbols.}}
+		\\
+				$A$
+			&
+				$\in \F{R}_{> 0} \unit{[m^2]}$, projected wing area
+		\\\hline%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\multicolumn{2}{l}{\textit{Greek symbols.}}
+		\\
+				$\alpha$
+			&
+				$\in \F{R} \unit{[^\circ]}$
+				angle of attack
+	\end{longtable}
+	
+	
+	
+	\chapter*{List of Abbreviations and Terms}
+	\addcontentsline{toc}{chapter}{List of abbreviations and terms}
+	
+	\begin{longtable}[H]{p{3cm}p{11cm}}
+				\textsf{\textbf{Abbreviation/term}}
+			&
+				\textsf{\textbf{Meaning}}
+		\hline\endhead
+				PMSM
+			&
+				permanent magnet machine
+		\\
+				AC
+			&
+				alternating current
+	\end{longtable}
+	
+}{}
+
+%NOTE: for the report template, the highest level is chapter. This needs to be changed everywhere:
+\ifthenelse{\boolean{isReportTemplate}}{
+	\chapter{Motivation}
+}{
+	\section{Motivation}
+}
+
+\ifthenelse{\boolean{isIEEETemplate}}{
+	\IEEEPARstart{T}{he}
+}{
+	The
+}
+first section is always titled “Motivation” or alternatively “Introduction”. In this first section, you briefly introduce your topic and motivate why it is interesting/important to actually think about it. E.g.\ in the first one or two paragraphs of a work related to kite power, you briefly introduce the idea/technology of kite power, also with a figure.
 
 In the next one or two paragraphs, you describe the specific problem you are dealing with in your work, e.g.\ the control of the kite. You specifically state solutions other researchers published (with reference, about three to ten relevant/important references, depending on the problem/research field) and their shortcomings, you are trying to improve with your proposed solution, e.g.: “Musterfrau proposed in~[42] to use model predictive control (MPC) to control all states of the kite. Musterdame improved the control scheme for real time execution in~[43]. However, one shortcoming in these solutions is the complexity of the optimization algorithm of MPC. In this paper, a different approach is proposed, by using set of cascaded PID controllers and a switching logic. As a result, a relatively simple control structure which is executable in real time on low cost micro controllers is used to control the kite.” Give a few important/interesting details, what is different (or better) on your approach, but keep these statements short: Details follow in the main part. If a longer literature review is required, you can also have a section after the motivation titled “Related Works” or “Literature Review” or similar. You usually receive a few literature reference from your supervisor as a general starting point of your work. For more literature, have a look into the literature references of those literature references. Google Scholar or IEEExplore with the extended search are further sources for your literature review. At the end, you should have at least ten papers, theses or dissertations in your literature list. This does not mean, that you have read and understood completely all these publications. However, you should have understood the key ideas, methods and results of a cited publication.
 
@@ -471,25 +806,32 @@ Every paper ends with the section “Conclusion(s)” or “Conclusion(s) and Ou
 
 
 
+\ifthenelse{\boolean{isIEEETemplate}}{
+	% If have a single appendix:
+	%\appendix[Appendix Heading]
+	% Do not use subsections if you have a single appendix.
+	
+	% If have several appendices:
+	%\appendices
+	%\section{Heading of Appendix A}
+	%\subsection{Subsection A.1}
+	
+	\appendices
+}{
+	\appendix
+}
 
-% If have a single appendix:
-%\appendix[Appendix Heading]
-% Do not use subsections if you have a single appendix.
-
-% If have several appendices:
-%\appendices
-%\section{Heading of Appendix A}
-%\subsection{Subsection A.1}
-
-
-\appendices
-\section{Further Guides for Your Report or Thesis}
+\ifthenelse{\boolean{isIEEETemplate} \OR \boolean{isArticleTemplate}}{
+	\section{Further Guides for Your Report or Thesis}
+}{
+	\chapter{Further Guides for Your Report or Thesis}
+}
 
 In the following, a few further guidelines (dos and don'ts) are given.
 
 \subsection{Template, Software and Language}
 
-For an Engineer's Internship Report, Seminar Paper or Researcher's Internship Report you are invited to use this IEEEtrans template (\LaTeX). You may also use article, report, scrartcl or scrreprt. For a bachelor or master thesis, you may use one of the four latter or book, or scrbook. Please have a close look into the source code of this document, to get a few tips on writing in \LaTeX\ (e.g.\ the tilde in \texttt{Fig.$\sim$\textbackslash{}ref\{key\}} to avoid a line break).
+For an Engineer's Internship Report, Seminar Paper, Researcher's Report, Bachelor Thesis and Master Thesis you are invited to use this \LaTeX\ template. Please have a close look into the source code of this document to choose the correct options. You can also extract a few tips on writing in \LaTeX\ (e.g.\ the tilde in \texttt{Fig.$\sim$\textbackslash{}ref\{key\}} to avoid a line break).
 
 \LaTeX\ is highly (!) recommended, but any other software (e.g.\ Word, OpenOffice) may be used. TUM provides some templates (also for presentations) which may be used: \url{https://portal.mytum.de/corporatedesign}
 
@@ -628,10 +970,11 @@ In the following, a few guidelines (dos and don'ts) for your presentations are g
 
 
 
-
-\section*{Acknowledgments}
-
-\dots if you would like to thank someone. In a thesis, acknowledgements are usually put on one of the first pages.
+\ifthenelse{\boolean{isIEEETemplate} \OR \boolean{isArticleTemplate}}{
+	\section*{Acknowledgments}
+	
+	\dots if you would like to thank someone. In a thesis, acknowledgements are usually put on one of the first pages.
+}{}
 
 
 
@@ -654,7 +997,21 @@ In the following, a few guidelines (dos and don'ts) for your presentations are g
 
 % references section
 
-\bibliographystyle{IEEEtran}
-\bibliography{IEEEabrv,GuidelinesStudentsReportsAndThesesBibliography}
+\ifthenelse{\boolean{isIEEETemplate} \OR \boolean{isArticleTemplate}}{
+	\bibliographystyle{IEEEtran}
+	\bibliography{IEEEabrv,GuidelinesStudentsReportsAndThesesBibliography}
+}{
+	\chapter*{Bibliography}
+	\addcontentsline{toc}{chapter}{Bibliography}
+	
+%	\noindent\textit{Direct citations are marked by citation marks (“\dots”) except if the citation is a number. For those citations, the corresponding reference marks (in square brackets, [\dots]) are placed straight behind. Indirect citations are marked by reference marks as follows: Reference marks before a full stop relate to the sentence. Reference marks behind a full stop relate to everything before that reference mark up to the last reference mark of an indirect citation or the beginning of the paragraph. If direct citations are not echoed exactly, changes are marked inside square brackets.}
+	
+	\begingroup
+	\renewcommand{\chapter}[2]{}%
+	
+	\bibliographystyle{unsrt}
+	\bibliography{GuidelinesStudentsReportsAndThesesBibliography}
+}{
+
 
 \end{document}
