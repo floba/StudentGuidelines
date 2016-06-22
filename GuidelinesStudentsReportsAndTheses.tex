@@ -1,11 +1,11 @@
 %choose template: (un)comment all 5 lines:
 
-%Template 1: IEEE (for Engineer's Internship Report, Seminar Paper, Researcher's Internship Report)
-\documentclass[journal]{IEEEtran}
-\usepackage{ifthen}
-\newboolean{isIEEETemplate}\setboolean{isIEEETemplate}{true}
-\newboolean{isArticleTemplate}\setboolean{isArticleTemplate}{false}
-\newboolean{isReportTemplate}\setboolean{isReportTemplate}{false}
+%%Template 1: IEEE (for Engineer's Internship Report, Seminar Paper, Researcher's Internship Report)
+%\documentclass[journal]{IEEEtran}
+%\usepackage{ifthen}
+%\newboolean{isIEEETemplate}\setboolean{isIEEETemplate}{true}
+%\newboolean{isArticleTemplate}\setboolean{isArticleTemplate}{false}
+%\newboolean{isReportTemplate}\setboolean{isReportTemplate}{false}
 
 
 %%Template 2: scrartcl (for Engineer's Internship Report, Seminar Paper, Researcher's Internship Report)
@@ -16,12 +16,12 @@
 %\newboolean{isReportTemplate}\setboolean{isReportTemplate}{false}
 
 
-%%Template 3: scrreprt (for Bachelor Thesis, Master Thesis)
-%\documentclass[a4paper, 10pt, DIV10, pointlessnumbers]{scrreprt}
-%\usepackage{ifthen}
-%\newboolean{isIEEETemplate}\setboolean{isIEEETemplate}{false}
-%\newboolean{isArticleTemplate}\setboolean{isArticleTemplate}{false}
-%\newboolean{isReportTemplate}\setboolean{isReportTemplate}{true}
+%Template 3: scrreprt (for Bachelor Thesis, Master Thesis)
+\documentclass[a4paper, 10pt, DIV10, pointlessnumbers]{scrreprt}
+\usepackage{ifthen}
+\newboolean{isIEEETemplate}\setboolean{isIEEETemplate}{false}
+\newboolean{isArticleTemplate}\setboolean{isArticleTemplate}{false}
+\newboolean{isReportTemplate}\setboolean{isReportTemplate}{true}
 
 
 
@@ -407,7 +407,7 @@ Max~Mustermann$^*$%
 %		\noindent an der Technischen Universität München (TUM),\\ Fakultät für Elektrotechnik und Informationstechnik (EI),\\ Lehrstuhl für Elektrische Antriebssysteme und Leistungselektronik (EAL)\par
 %		\vspace{3cm}%
 %		\noindent%
-%		\begin{tabular}{ll}%
+%		\begin{tabular}{@{}ll@{}}%
 %					eingereicht von
 %				&
 %					Max Mustermann, B.Sc.
@@ -459,12 +459,12 @@ Max~Mustermann$^*$%
 		\noindent at the Technical University of Munich (TUM),\\ Department of Electrical and Computer Engineering,\\ Institute for Electrical Drive Systems and Power Electronics\par
 		\vspace{3cm}%
 		\noindent%
-		\begin{tabular}{ll}
+		\begin{tabular}{@{}ll@{}}
 					submitted by
 				&
 					Max Mustermann, B.Sc.
 					\\&
-					Matrikelnummer: 123456
+					Matriculation Number: 123456
 					\\&
 					\url{max.mustermann@tum.de}
 					
