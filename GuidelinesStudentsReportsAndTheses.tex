@@ -17,11 +17,28 @@
 
 
 %%Template 3: scrreprt (for Bachelor Thesis, Master Thesis)
-%\documentclass[a4paper, 10pt, DIV10, pointlessnumbers]{scrreprt}
+%\documentclass[a4paper, 10pt, DIV10, pointlessnumbers, appendixprefix=true]{scrreprt}
 %\usepackage{ifthen}
 %\newboolean{isIEEETemplate}\setboolean{isIEEETemplate}{false}
 %\newboolean{isArticleTemplate}\setboolean{isArticleTemplate}{false}
 %\newboolean{isReportTemplate}\setboolean{isReportTemplate}{true}
+
+
+
+
+% *** KOMA SCRIPT OPTIONS ***
+
+\ifthenelse{\boolean{isReportTemplate}}{
+%	\numberwithin{figure}{chapter}
+%	\numberwithin{table}{chapter}
+%	\numberwithin{equation}{chapter}
+}{}
+
+\ifthenelse{\boolean{isArticleTemplate} \OR \boolean{isReportTemplate}}{
+	\setkomafont{captionlabel}{\sffamily\bfseries}
+%	\renewcommand{\figurename}{Fig.}
+%	\renewcommand{\tablename}{Tab.}
+}{}
 
 
 
@@ -393,14 +410,14 @@ Max~Mustermann$^*$%
 \ifthenelse{\boolean{isReportTemplate}}{
 %	% title page in German
 %	\begin{titlepage}
-%		\areaset{17cm}{25.7cm}%
+%%		\areaset{17cm}{25.7cm}%
 %		\hfill\includegraphics{Images/TUM.pdf}\par%
 %		\vspace{3cm}%
 %		{\noindent\Huge\bfseries\sffamily Title\par}
 %		\vspace{0.5cm}%
 %		{\noindent\LARGE\bfseries\sffamily Master Thesis\par}
 %		\vfill%
-%		{\noindent\Large Wissenschaftliche Arbeit zur Erlangung des Grades\par
+%		{\noindent\large Wissenschaftliche Arbeit zur Erlangung des Grades\par
 %		\vspace{1em}
 %		\noindent M.Sc.\par
 %		\vspace{1em}
@@ -445,14 +462,14 @@ Max~Mustermann$^*$%
 
 	% title page in English
 	\begin{titlepage}
-		\areaset{17cm}{25.7cm}%
+%		\areaset{17cm}{25.7cm}%
 		\hfill\includegraphics{Images/TUM.pdf}\par%
 		\vspace{3cm}%
 		{\noindent\Huge\bfseries\sffamily Title\par}
 		\vspace{0.5cm}%
 		{\noindent\LARGE\bfseries\sffamily Master Thesis\par}
 		\vfill%
-		{\noindent\Large to gain the academic degree\par
+		{\noindent\large to gain the academic degree\par
 		\vspace{1em}
 		\noindent M.Sc.\par
 		\vspace{1em}
@@ -514,7 +531,6 @@ Write a concise summary in 100 to 250 words maximum (half a page maximum for a t
 
 \ifthenelse{\boolean{isReportTemplate}}{
 %	%statement in German
-%	\addcontentsline{toc}{chapter}{Erklärung}
 %	\chapter*{Erklärung}
 %	
 %	Ich versichere hiermit, dass ich die von mir eingereichte Abschlussarbeit selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe.
@@ -632,7 +648,7 @@ Write a concise summary in 100 to 250 words maximum (half a page maximum for a t
 	\newpage
 	
 	\chapter*{List of Symbols}
-	\addcontentsline{toc}{chapter}{List of symbols}
+	\addcontentsline{toc}{chapter}{List of Symbols}
 	
 	\begin{longtable}[H]{p{3cm}p{11cm}}
 				\textsf{\textbf{Symbol}}
@@ -656,7 +672,7 @@ Write a concise summary in 100 to 250 words maximum (half a page maximum for a t
 	
 	
 	\chapter*{List of Abbreviations and Terms}
-	\addcontentsline{toc}{chapter}{List of abbreviations and terms}
+	\addcontentsline{toc}{chapter}{List of Abbreviations and Terms}
 	
 	\begin{longtable}[H]{p{3cm}p{11cm}}
 				\textsf{\textbf{Abbreviation/term}}
