@@ -95,14 +95,14 @@
 
 % *** GRAPHICS RELATED PACKAGES ***
 %
-\ifCLASSINFOpdf
+%\ifCLASSINFOpdf
   \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
   % \graphicspath{{../pdf/}{../jpeg/}}
   % and their extensions so you won't have to specify these with
   % every instance of \includegraphics
   % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
-\else
+%\else
   % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
   % will default to the driver specified in the system graphics.cfg if no
   % driver is specified.
@@ -112,7 +112,7 @@
   % and their extensions so you won't have to specify these with
   % every instance of \includegraphics
   % \DeclareGraphicsExtensions{.eps}
-\fi
+%\fi
 % graphicx was written by David Carlisle and Sebastian Rahtz. It is
 % required if you want graphics, photos, etc. graphicx.sty is already
 % installed on most LaTeX systems. The latest version and documentation
@@ -140,6 +140,7 @@
 % *** MATH PACKAGES ***
 %
 \usepackage{amsmath}
+\usepackage{amssymb}
 % A popular package from the American Mathematical Society that provides
 % many useful and powerful commands for dealing with mathematics.
 %
@@ -312,7 +313,6 @@
 
 % *** PDF, URL AND HYPERLINK PACKAGES ***
 %
-\usepackage{url}
 \usepackage[hyphens]{url}
 \renewcommand{\UrlBreaks}{\do\/\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z}
 %\usepackage[hyphenbreaks]{breakurl}
@@ -366,7 +366,11 @@
 \renewcommand{\t}[1]{\text{\normalfont{#1}}} %text for indices
 \newcommand{\M}{\boldsymbol} %matrix
 \renewcommand{\v}{\boldsymbol} %vector
+\newcommand{\T}{\top} %transpose
 \renewcommand{\d}{\mathrm{d}} %for d / dt
+\newcommand{\F}[1]{\mathbb{#1}} %e.g. for "in reals"
+\newcommand{\dir}{\operatorname{dir}} %direction
+\newcommand{\uv}[1]{\unit{\left[#1\right]}} %unit of variable
 
 
 
@@ -384,8 +388,8 @@
 	%Engineer's Internship Report
 	Seminar Paper
 	%Researcher's Internship Report
-	at Technical University of Munich
-}{}\\
+	at Technical University of Munich\\
+}{}
 Max~Mustermann$^*$%
 \thanks{$^*$ Max~Mustermann is M.Sc.\ candidate (matriculation number 123456) at the Department of Electrical Engineering and Information Technology, Technical University of Munich, Arcisstrasse 21, 80333 Munich, Germany, \url{max.mustermann@tum.de}.}
 \ifthenelse{\boolean{isIEEETemplate}}{%
@@ -573,7 +577,7 @@ Write a concise summary in 100 to 250 words maximum (half a page maximum for a t
 				\textsf{\textbf{Symbol}}
 			&
 				\textsf{\textbf{Meaning}}
-		\hline\endhead
+		\\\hline\endhead
 				$\F{N}$
 			&
 				$:= \{0, 1, 2, 3, \dots\}$, set of natural numbers
@@ -653,7 +657,7 @@ Write a concise summary in 100 to 250 words maximum (half a page maximum for a t
 				\textsf{\textbf{Symbol}}
 			&
 				\textsf{\textbf{Meaning}}
-		\hline\endhead
+		\\\hline\endhead
 			\multicolumn{2}{l}{\textit{Latin symbols.}}
 		\\
 				$A$
@@ -677,7 +681,7 @@ Write a concise summary in 100 to 250 words maximum (half a page maximum for a t
 				\textsf{\textbf{Abbreviation/term}}
 			&
 				\textsf{\textbf{Meaning}}
-		\hline\endhead
+		\\\hline\endhead
 				PMSM
 			&
 				permanent magnet machine
@@ -996,9 +1000,9 @@ In the following, a few guidelines (dos and don'ts) for your presentations are g
 
 % Can use something like this to put references on a page
 % by themselves when using endfloat and the captionsoff option.
-\ifCLASSOPTIONcaptionsoff
-  \newpage
-\fi
+%\ifCLASSOPTIONcaptionsoff
+%  \newpage
+%\fi
 
 
 
