@@ -411,59 +411,7 @@ Max~Mustermann$^*$%
 }{}
 
 \ifthenelse{\boolean{isReportTemplate}}{
-%	% title page in German
-%	\begin{titlepage}
-%%		\areaset{17cm}{25.7cm}%
-%		\hfill\includegraphics{Images/TUM.pdf}\par%
-%		\vspace{3cm}%
-%		{\noindent\Huge\bfseries\sffamily\raggedright Title\par}
-%		\vspace{0.5cm}%
-%		{\noindent\LARGE\bfseries\sffamily Master Thesis\par}
-%		\vfill%
-%		{\noindent\large Wissenschaftliche Arbeit zur Erlangung des Grades\par
-%		\vspace{1em}
-%		\noindent M.Sc.\par
-%		\vspace{1em}
-%		\noindent an der Technischen Universität München (TUM),\\ Fakultät für Elektrotechnik und Informationstechnik (EI),\\ Lehrstuhl für Elektrische Antriebssysteme und Leistungselektronik (EAL)\par
-%		\vspace{3cm}%
-%		\noindent%
-%		\begin{tabular}{@{}ll@{}}%
-%					eingereicht von
-%				&
-%					Max Mustermann, B.Sc.
-%					\\&
-%					Matrikelnummer: 123456
-%					\\&
-%					\url{max.mustermann@tum.de}
-%					
-%			\\
-%				\hfill
-%			\\
-%					am
-%				&
-%					\today.
-%			\\
-%				\hfill
-%			\\	
-%					1.\ Betreuer:
-%				&
-%					Univ.-Prof.\ Dr.-Ing.\ Ralph Kennel
-%					\\&
-%					Lehrstuhl für Elektrische Antriebssysteme und \\& Leistungselektronik (EAL)
-%					
-%			\\
-%				\hfill
-%			\\
-%					2.\ Betreuer:
-%				&
-%					Max Mustermann, M.Sc.
-%					\\&
-%					Lehrstuhl für Elektrische Antriebssysteme und \\& Leistungselektronik (EAL)
-%		\end{tabular}%
-%		}%
-%	\end{titlepage}
-
-	% title page in English
+	% title page in German
 	\begin{titlepage}
 %		\areaset{17cm}{25.7cm}%
 		\hfill\includegraphics{Images/TUM.pdf}\par%
@@ -472,48 +420,98 @@ Max~Mustermann$^*$%
 		\vspace{0.5cm}%
 		{\noindent\LARGE\bfseries\sffamily Master Thesis\par}
 		\vfill%
-		{\noindent\large to gain the academic degree\par
+		{\noindent\large Wissenschaftliche Arbeit zur Erlangung des Grades\par
 		\vspace{1em}
 		\noindent M.Sc.\par
 		\vspace{1em}
-		\noindent at the Technical University of Munich (TUM),\\ Department of Electrical and Computer Engineering,\\ Institute for Electrical Drive Systems and Power Electronics\par
+		\noindent an der Technischen Universität München (TUM),\\ Fakultät für Elektrotechnik und Informationstechnik (EI),\\ Lehrstuhl für Elektrische Antriebssysteme und Leistungselektronik (EAL)\par
 		\vspace{3cm}%
 		\noindent%
-		\begin{tabular}{@{}ll@{}}
-					submitted by
+		\begin{tabular}{@{}ll@{}}%
+					eingereicht von
 				&
 					Max Mustermann, B.Sc.
 					\\&
-					Matriculation Number: 123456
+					Matrikelnummer: 123456
 					\\&
-					\url{max.mustermann@tum.de}
-					
+					Kontakt: \url{max.mustermann@tum.de}, +49 89 123 456 89
 			\\
 				\hfill
 			\\
-					on
+					am
 				&
-					\today	
+					\today in München.
 			\\
 				\hfill
-			\\
-					1.\ Supervisor:
+			\\	
+					1.\ Betreuer:
 				&
 					Univ.-Prof.\ Dr.-Ing.\ Ralph Kennel
 					\\&
-					Institute for Electrical Drive Systems and Power Electronics
+					Lehrstuhl für Elektrische Antriebssysteme und \\& Leistungselektronik (EAL)
 					
 			\\
 				\hfill
 			\\
-					2.\ Supervisor:
+					2.\ Betreuer:
 				&
 					Max Mustermann, M.Sc.
 					\\&
-					Institute for Electrical Drive Systems and Power Electronics
+					Lehrstuhl für Elektrische Antriebssysteme und \\& Leistungselektronik (EAL)
 		\end{tabular}%
 		}%
 	\end{titlepage}
+
+%	% title page in English
+%	\begin{titlepage}
+%%		\areaset{17cm}{25.7cm}%
+%		\hfill\includegraphics{Images/TUM.pdf}\par%
+%		\vspace{3cm}%
+%		{\noindent\Huge\bfseries\sffamily\raggedright Title\par}
+%		\vspace{0.5cm}%
+%		{\noindent\LARGE\bfseries\sffamily Master Thesis\par}
+%		\vfill%
+%		{\noindent\large to gain the academic degree\par
+%		\vspace{1em}
+%		\noindent M.Sc.\par
+%		\vspace{1em}
+%		\noindent at the Technical University of Munich (TUM),\\ Department of Electrical and Computer Engineering,\\ Institute for Electrical Drive Systems and Power Electronics\par
+%		\vspace{3cm}%
+%		\noindent%
+%		\begin{tabular}{@{}ll@{}}
+%					submitted by
+%				&
+%					Max Mustermann, B.Sc.
+%					\\&
+%					Matriculation Number: 123456
+%					\\&
+%					Contact: \url{max.mustermann@tum.de}, +49 89 123 456 89
+%			\\
+%				\hfill
+%			\\
+%					on
+%				&
+%					\today in Munich.
+%			\\
+%				\hfill
+%			\\
+%					1.\ Supervisor:
+%				&
+%					Univ.-Prof.\ Dr.-Ing.\ Ralph Kennel
+%					\\&
+%					Institute for Electrical Drive Systems and Power Electronics
+%					
+%			\\
+%				\hfill
+%			\\
+%					2.\ Supervisor:
+%				&
+%					Max Mustermann, M.Sc.
+%					\\&
+%					Institute for Electrical Drive Systems and Power Electronics
+%		\end{tabular}%
+%		}%
+%	\end{titlepage}
 }{}
 
 \ifthenelse{\boolean{isIEEETemplate} \OR \boolean{isArticleTemplate}}{
@@ -533,25 +531,25 @@ Write a concise summary in 100 to 250 words maximum (half a page maximum for a t
 }
 
 \ifthenelse{\boolean{isReportTemplate}}{
-%	%statement in German
-%	\chapter*{Erklärung}
-%	
-%	Ich versichere hiermit, dass ich die von mir eingereichte Abschlussarbeit selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe.
-%	
-%	\vspace{2cm}
-%	\noindent
-%	München, den \today\\
-%	Max Mustermann
+	%statement in German
+	\chapter*{Erklärung}
 	
-	%statement in English
-	\chapter*{Statement}
-	
-	No sections of this thesis were submitted or used to gain another academic degree. Hereby I state, that this thesis was written alone by myself, except of explicitly marked passages.
+	Ich versichere hiermit, dass ich die von mir eingereichte Abschlussarbeit selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe.
 	
 	\vspace{2cm}
 	\noindent
-	Munich, \today\\
+	München, \today\\
 	Max Mustermann
+	
+%	%statement in English
+%	\chapter*{Statement}
+%	
+%	No sections of this thesis were submitted or used to gain another academic degree. Hereby I state, that this thesis was written alone by myself, except of explicitly marked passages.
+%	
+%	\vspace{2cm}
+%	\noindent
+%	Munich, \today\\
+%	Max Mustermann
 
 
 	\chapter*{Acknowledgments}
@@ -954,7 +952,7 @@ Before you submit a revision to your supervisor, always use a spell checker for 
 
 The quotation mark symbol in \LaTeX\ is not \texttt{"}. It is \texttt{``quoted''} or the respective UTF-8 symbols “quoted” (you might have shortcuts on your operating system).
 
-Use bibtex (or alternatively biber) for the bibliography in \LaTeX{}. For many publication databases you find the bibtex entry of a paper online (e.g.\ google books or IEEExplore) which just needs to be copied and pasted into your bib file: Fig.~\ref{IEEExplore.png} shows a screenshot from IEEExplore. After clicking on “Download Citation”, copy the text and paste it into your “.bib” file.
+Use bibtex (or alternatively biber) for the bibliography in \LaTeX{}.---This document's references are set with \texttt{bibtex}. However, biblatex with \texttt{biber} can provide better control/more information on references (e.g.\ date of weblink).---For many publication databases you find the bibtex entry of a paper online (e.g.\ google books or IEEExplore) which just needs to be copied and pasted into your bib file: Fig.~\ref{IEEExplore.png} shows a screenshot from IEEExplore. After clicking on “Download Citation”, copy the text and paste it into your “.bib” file.
 
 \begin{figure}[h!]
 	\centering
@@ -967,6 +965,24 @@ Use bibtex (or alternatively biber) for the bibliography in \LaTeX{}. For many p
 \subsection{Further Reading}
 
 Please also read “How to write for Technical Periodicals \& conferences” by IEEE, \url{http://www.ieee.org/publications_standards/publications/authors/author_guide_interactive.pdf}, at least Secs.~6--7. Another guide is \url{http://journals.aps.org/files/rmpguide.pdf}.
+
+
+\section{Common Mistakes}
+
+Please avoid any of these mistakes:
+\begin{itemize}
+\item There is only one subsection in a section. (There must be at least two.)
+\item There is no full-stop at the end of a caption. (Each caption must end with a full-stop.)
+\item Equations are outside of sentences. (Each equation should be embedded in the reading-flow of the text flow.)
+\item Some symbols, used in equations, are not explained. (Each used symbol in an equation must be introduced at least at its first use.)
+\item Sentence begins with a symbol. (Never start a sentence with a symbol.)
+\item A figure, table, or literature entry is placed, but never mentioned in the text. (Each figure, table and literature entry has to be referenced in the text at least once.)
+\item There are many misspellings and grammatical errors. (Use a spell-checker and let someone else read your document. Your submitted document should have no such errors.)
+\item There is a figure or table, just below a section heading. (A section should not begin with a figure or table.)
+\item Incorrect quotation marks are used. (Type “latex quotation marks” in your favorite search engine.)
+\item Braces in equations are too small. (Use \texttt{\textbackslash{}left} and \texttt{\textbackslash{}right} to get proper brace sizes.)
+\item For referencing, “section/sec./sect.~a”, “chapter/chap.~b”, “figure/fig.~x”, “table/tab.~y” and/or “equation/eq.~z” is written. (Write “Sect.~a”, “Chap.~b”, “Fig.~x”, “Tab.~y” and “Eq.~(z)” or just “(z)”.)
+\end{itemize}
 
 
 \section{Guidelines for Your Presentation}
